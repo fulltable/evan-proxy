@@ -1,13 +1,14 @@
 const express = require('express');
-// const morgan = require('morgan');
-const path = require('path');
-const app = express();
-const port = process.env.PORT || 3000;
+const morgan = require('morgan');
 const axios = require('axios');
+const controllers = require('./controllers');
 
-const axios3001 = axios.create({
-  baseURL: 'http://54.161.138.158',
-});
+const port = process.env.PORT || 3000;
+const app = express();
+
+// const axios3001 = axios.create({
+//   baseURL: 'http://54.161.138.158',
+// });
 const axios3002 = axios.create({
   baseURL: 'http://18.188.49.19',
 });
@@ -17,6 +18,9 @@ const axios3003 = axios.create({
 const axios3004 = axios.create({
   baseURL: 'http://34.219.173.69',
 });
+
+app.use(morgan('dev'));
+app.use('/restaurants/:id', express.static('public'));
 
 app.get('/api/restaurants/:id/menus', (req, res) => {
   axios3004.get(`/api/restaurants/${req.params.id}/menus`)
@@ -48,15 +52,10 @@ app.get('/api/restaurants/:id/photos', (req, res) => {
     .catch(error => res.send(error));
 });
 
-app.get('/api/restaurants/:id/reviews', (req, res) => {
-  axios3001.get(`/api/restaurants/${req.params.id}/reviews`)
-    .then(response => res.send(response.data))
-    .catch(error => res.send(error));
-});
-
-
-// app.use(morgan('dev'));
-app.use('/restaurants/:id', express.static(path.join(__dirname, '../public')));
+app.post('/api/restaurants/:restaurant_id/reviews', controllers.reviewsPost);
+app.get('/api/restaurants/:restaurant_id/reviews', controllers.reviewsGet);
+app.patch('/api/restaurants/:restaurant_id/reviews/review_id', controllers.reviewsPatch);
+app.delete('/api/restaurants/:restaurant_id/reviews/review_id', controllers.reviewsDelete);
 
 app.listen(port, () => {
   console.log(`server running at: http://localhost:${port}`);
