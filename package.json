@@ -4,20 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/index.js",
-    "server-dev": "nodemon server/index.js"
+    "start": "node server/server.js",
+    "cluster-start": "node server/cluster.js",
+    "server-dev": "nodemon server/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+    "cluster": "^0.7.7",
     "express": "^4.16.4",
-    "newrelic": "^5.7.0"
+    "faker": "^4.1.0",
+    "moment": "^2.24.0",
+    "newrelic": "^5.7.0",
+    "os": "^0.1.1"
   },
   "devDependencies": {
     "artillery": "^1.6.0-27",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.11"
   }
 }
