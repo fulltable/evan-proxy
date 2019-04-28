@@ -1,7 +1,8 @@
 const axios = require('axios');
 
 module.exports.reviewsPost = (req, res) => {
-  axios.post(`http://localhost:3001/api/restaurants/${req.params.id}/reviews`, req.body)
+  const { restaurant_id } = req.params;
+  axios.post(`http://localhost:3001/api/restaurants/${restaurant_id}/reviews`, req.body)
     .then(response => res.send(response.data))
     .catch(err => {
       console.error(err);
