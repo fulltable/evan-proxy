@@ -1,4 +1,4 @@
-/* @font-face {
+@font-face {
   font-family: "Brandon";
   src: 
     url("fonts/BText-Regular.otf");
@@ -17,7 +17,7 @@
   font-family: "Brandon-Light";
   src:
     url("fonts/BText-Light.otf");
-} */
+}
 .proxy-container {
   display: grid;
   grid-template-columns: 640px 320px;

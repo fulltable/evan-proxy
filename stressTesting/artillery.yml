@@ -10,7 +10,7 @@ scenarios:
     - function: "generateRestaurantId"
     - get:
         url: "/api/restaurants/{{ restaurantId }}/reviews"
-  #  - log: "Sent a request to /restaurants with restaurantId {{ restaurantId }}"
+  # - log: "Sent a request to /restaurants with restaurantId {{ restaurantId }}"
   # - name: "post review to a restaurant"
   #   flow:
   #   - function: "generateRestaurantId"
