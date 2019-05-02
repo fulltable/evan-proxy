@@ -6,10 +6,9 @@ const controllers = require('./controllers');
 const port = process.env.PORT || 3000;
 const app = express();
 
-
+app.use(morgan('tiny'));
 app.use(express.json());
 
-app.use(morgan('dev'));
 app.use('/restaurants/:restaurant_id', express.static('public'));
 
 app.post('/api/restaurants/:restaurant_id/reviews', controllers.reviewsPost);
@@ -18,5 +17,5 @@ app.patch('/api/restaurants/:restaurant_id/reviews/:review_id', controllers.revi
 app.delete('/api/restaurants/:restaurant_id/reviews/:review_id', controllers.reviewsDelete);
 
 app.listen(port, () => {
-  console.log(`server running at: http://localhost:${port}`);
+  console.log(`listening on port ${port}`);
 });
