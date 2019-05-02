@@ -10,7 +10,7 @@ app.use(morgan('tiny'));
 app.use(express.json());
 
 app.use('/restaurants/:restaurant_id', express.static('public'));
-app.use('/', express.static('client/dist'));
+app.use('/', express.static('public'));
 
 app.post('/api/restaurants/:restaurant_id/reviews', controllers.reviewsPost);
 app.get('/api/restaurants/:restaurant_id/reviews', controllers.reviewsGet);
