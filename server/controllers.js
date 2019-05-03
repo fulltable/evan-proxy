@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const serverURL = `http://ec2-54-215-246-64.us-west-1.compute.amazonaws.com:3001`
+const serverURL = `ec2-54-67-119-225.us-west-1.compute.amazonaws.com` // load balancer
 
 module.exports.reviewsPost = (req, res) => {
   const { restaurant_id } = req.params;
